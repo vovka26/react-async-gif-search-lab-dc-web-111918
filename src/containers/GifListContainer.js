@@ -11,7 +11,7 @@ class GifListContainer extends Component {
         fetch(`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&rating=g`)
         .then(res => res.json())
         .then(data => {
-            const firstThree = data.data.slice(0, 3)
+            const firstThree = data.data.slice(0, 10)
             this.setState({results: firstThree})
         })
     }
@@ -19,8 +19,8 @@ class GifListContainer extends Component {
     render(){
         return (
             <div>
-                <GifList gifs={this.state.results}/>
                 <GifSearch fetchGifs={this.fetchGifs}/>
+                <GifList gifs={this.state.results}/>
             </div>
         )
     }
